@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TrustVault Kashmir — Protecting Business Confidence in Real Time</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #020b18;
+    --deep: #050f1f;
+    --panel: rgba(6,18,38,0.85);
+    --glass: rgba(10,30,60,0.6);
+    --accent: #00d4ff;
+    --accent2: #0077ff;
+    --accent3: #00ffb3;
+    --warn: #ffaa00;
+    --danger: #ff3c5a;
+    --text: #e8f4ff;
+    --muted: #7aa0c4;
+    --border: rgba(0,212,255,0.15);
+    --glow: 0 0 30px rgba(0,212,255,0.25);
+    --glow2: 0 0 60px rgba(0,212,255,0.12);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--navy);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 48px;
+    background: rgba(2,11,24,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { font-family:'Syne',sans-serif; font-weight:800; font-size:1.1rem; letter-spacing:0.12em; color:var(--accent); }
+  .nav-logo span { color: var(--text); }
+  .nav-links { display:flex; gap:32px; list-style:none; }
+  .nav-links a { color:var(--muted); text-decoration:none; font-size:0.85rem; letter-spacing:0.06em; transition:color .2s; }
+  .nav-links a:hover { color:var(--accent); }
+  .nav-cta {
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-family:'Syne',sans-serif;
+    font-size:0.8rem;
+    letter-spacing:0.1em;
+    cursor:pointer;
+    transition: all .25s;
+  }
+  .nav-cta:hover { background:var(--accent); color:var(--navy); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex; flex-direction:column; align-items:center; justify-content:center;
+    position: relative;
+    overflow: hidden;
+    padding: 100px 24px 60px;
+    text-align: center;
+  }
+  .hero-grid {
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    animation: gridDrift 20s linear infinite;
+  }
+  @keyframes gridDrift { from{transform:translateY(0)} to{transform:translateY(60px)} }
+  .hero-glow {
+    position:absolute; top:50%; left:50%;
+    transform:translate(-50%,-50%);
+    width:700px; height:700px;
+    background: radial-gradient(circle, rgba(0,119,255,0.12) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .hero-eyebrow {
+    font-size:0.72rem; letter-spacing:0.3em; color:var(--accent);
+    margin-bottom:20px;
+    opacity:0; animation: fadeUp .8s .2s forwards;
+  }
+  .hero-title {
+    font-family:'Syne',sans-serif;
+    font-size: clamp(3rem, 7vw, 6.5rem);
+    font-weight:800; line-height:1.0;
+    letter-spacing:-0.02em;
+    opacity:0; animation: fadeUp .8s .4s forwards;
+  }
+  .hero-title .accent-word { color:var(--accent); }
+  .hero-sub {
+    font-size:1.05rem; color:var(--muted); margin-top:20px; max-width:500px;
+    opacity:0; animation: fadeUp .8s .6s forwards;
+  }
+
+  /* Trust Circle */
+  .trust-circle-wrap {
+    margin: 48px auto 0;
+    position: relative; width:240px; height:240px;
+    opacity:0; animation: fadeUp .8s .8s forwards;
+  }
+  .trust-ring {
+    position:absolute; inset:0; border-radius:50%;
+    border: 2px solid rgba(0,212,255,0.2);
+    animation: ringPulse 2.5s ease-in-out infinite;
+  }
+  .trust-ring:nth-child(2) { inset:-20px; animation-delay:.6s; opacity:.5; }
+  .trust-ring:nth-child(3) { inset:-40px; animation-delay:1.2s; opacity:.25; }
+  @keyframes ringPulse {
+    0%,100% { transform:scale(1); opacity:1; }
+    50% { transform:scale(1.04); opacity:.5; }
+  }
+  .trust-core {
+    position:absolute; inset:0; border-radius:50%;
+    background: radial-gradient(circle at 35% 35%, rgba(0,212,255,0.2), rgba(0,119,255,0.1));
+    border: 1.5px solid var(--accent);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    box-shadow: 0 0 40px rgba(0,212,255,0.3), inset 0 0 40px rgba(0,119,255,0.1);
+  }
+  .trust-num {
+    font-family:'Syne',sans-serif;
+    font-size:3.2rem; font-weight:800; color:var(--accent);
+    line-height:1;
+    text-shadow: 0 0 20px rgba(0,212,255,0.8);
+  }
+  .trust-label { font-size:0.7rem; letter-spacing:0.2em; color:var(--muted); margin-top:4px; }
+
+  .hero-btn {
+    margin-top:48px;
+    padding: 16px 40px;
+    background: linear-gradient(135deg, var(--accent2), var(--accent));
+    border:none; border-radius:4px;
+    color:#fff; font-family:'Syne',sans-serif; font-size:0.9rem; letter-spacing:0.12em; font-weight:700;
+    cursor:pointer;
+    box-shadow: 0 0 30px rgba(0,119,255,0.4);
+    transition: all .25s;
+    opacity:0; animation: fadeUp .8s 1s forwards;
+  }
+  .hero-btn:hover { transform:translateY(-2px); box-shadow: 0 0 50px rgba(0,119,255,0.6); }
+
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(24px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  /* ── SECTION BASE ── */
+  section { padding: 100px 48px; position:relative; }
+  .section-label { font-size:0.7rem; letter-spacing:0.3em; color:var(--accent); margin-bottom:12px; }
+  .section-title {
+    font-family:'Syne',sans-serif;
+    font-size: clamp(1.8rem, 3.5vw, 3rem);
+    font-weight:800; line-height:1.1;
+  }
+  .section-body { color:var(--muted); max-width:600px; margin-top:16px; font-size:1rem; }
+  .container { max-width:1200px; margin:0 auto; }
+
+  /* ── LIVE MAP ── */
+  #map-section { background: var(--deep); }
+  .map-wrap { display:grid; grid-template-columns:1fr 340px; gap:40px; margin-top:56px; align-items:start; }
+  .map-canvas { position:relative; border-radius:12px; overflow:hidden; border:1px solid var(--border); background:rgba(4,14,30,0.9); }
+  .map-header { padding:16px 20px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; }
+  .map-header span { font-size:0.72rem; letter-spacing:0.15em; color:var(--muted); }
+  .live-dot { width:8px;height:8px; border-radius:50%; background:var(--accent3); animation:blink 1.2s ease-in-out infinite; display:inline-block; margin-right:6px; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+  .map-svg-area { padding:20px; }
+
+  /* Kashmir SVG Map */
+  .district-path { cursor:pointer; transition: all .25s; }
+  .district-path:hover { opacity:0.85; filter:brightness(1.3); }
+
+  .map-legend { display:flex; gap:16px; padding:12px 20px; border-top:1px solid var(--border); flex-wrap:wrap; }
+  .legend-item { display:flex; align-items:center; gap:6px; font-size:0.72rem; color:var(--muted); }
+  .legend-dot { width:10px;height:10px; border-radius:50%; }
+
+  /* Info Panel */
+  .district-panel { }
+  .dp-header { font-family:'Syne',sans-serif; font-size:1.1rem; font-weight:700; margin-bottom:6px; }
+  .dp-badge {
+    display:inline-block; font-size:0.65rem; letter-spacing:0.12em;
+    padding:3px 10px; border-radius:20px; margin-bottom:20px;
+    background:rgba(0,255,179,0.12); color:var(--accent3); border:1px solid rgba(0,255,179,0.3);
+  }
+  .dp-stats { display:flex; flex-direction:column; gap:12px; }
+  .dp-stat { background:var(--glass); border:1px solid var(--border); border-radius:8px; padding:14px 16px; }
+  .dp-stat-label { font-size:0.7rem; letter-spacing:0.12em; color:var(--muted); margin-bottom:4px; }
+  .dp-stat-val { font-family:'Syne',sans-serif; font-size:1.4rem; font-weight:700; }
+  .dp-stat-val.green { color:var(--accent3); }
+  .dp-stat-val.blue  { color:var(--accent); }
+  .dp-stat-val.warn  { color:var(--warn); }
+  .dp-bar { height:4px; border-radius:2px; background:rgba(255,255,255,0.08); margin-top:8px; overflow:hidden; }
+  .dp-bar-fill { height:100%; border-radius:2px; transition: width .6s ease; }
+
+  /* ── THREAT DASHBOARD ── */
+  #threats { background:var(--navy); }
+  .threat-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:56px; }
+  .threat-card {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    border-radius:12px;
+    padding:28px;
+    position:relative;
+    overflow:hidden;
+    transition: border-color .25s;
+  }
+  .threat-card:hover { border-color: rgba(0,212,255,0.4); }
+  .threat-card::before {
+    content:'';
+    position:absolute; top:0; left:0; right:0; height:2px;
+    background: linear-gradient(90deg, var(--accent2), var(--accent));
+  }
+  .tc-status { display:flex; align-items:center; gap:8px; margin-bottom:20px; }
+  .tc-status-dot { width:8px;height:8px;border-radius:50%; }
+  .status-ok    { background:var(--accent3); box-shadow:0 0 8px var(--accent3); animation:blink 2s infinite; }
+  .status-run   { background:var(--warn); box-shadow:0 0 8px var(--warn); animation:blink 1s infinite; }
+  .status-alert { background:var(--danger); box-shadow:0 0 8px var(--danger); animation:blink .7s infinite; }
+  .tc-status-text { font-size:0.7rem; letter-spacing:0.2em; color:var(--muted); }
+  .tc-title { font-family:'Syne',sans-serif; font-size:1.1rem; font-weight:700; margin-bottom:8px; }
+  .tc-body  { font-size:0.88rem; color:var(--muted); }
+
+  .scan-line {
+    height:2px; border-radius:1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    margin:20px 0;
+    animation: scanAnim 2s linear infinite;
+    background-size: 200% 100%;
+  }
+  @keyframes scanAnim {
+    0%   { background-position: -100% 0; }
+    100% { background-position:  300% 0; }
+  }
+  .tc-items { display:flex; flex-direction:column; gap:8px; }
+  .tc-item { display:flex; align-items:center; gap:10px; font-size:0.83rem; color:var(--muted); }
+  .tc-item .check { color:var(--accent3); font-size:0.8rem; }
+  .tc-item .warn  { color:var(--warn); }
+  .tc-item .alert { color:var(--danger); }
+
+  /* ── VERIFIED WALL ── */
+  #businesses { background:var(--deep); }
+  .biz-grid { display:grid; grid-template-columns: repeat(3,1fr); gap:20px; margin-top:56px; }
+  .biz-card {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    border-radius:14px;
+    padding:28px;
+    backdrop-filter:blur(20px);
+    transition: all .3s;
+    position:relative; overflow:hidden;
+  }
+  .biz-card:hover { transform:translateY(-4px); border-color:rgba(0,212,255,0.4); box-shadow: var(--glow); }
+  .biz-card::after {
+    content:'';
+    position:absolute; inset:0; border-radius:14px;
+    background: linear-gradient(135deg, rgba(0,212,255,0.04) 0%, transparent 60%);
+    pointer-events:none;
+  }
+  .biz-tier { font-size:0.65rem; letter-spacing:0.2em; margin-bottom:14px; }
+  .platinum { color:#e5c97a; }
+  .gold     { color:#c0b080; }
+  .biz-name { font-family:'Syne',sans-serif; font-size:1.05rem; font-weight:700; margin-bottom:4px; }
+  .biz-loc  { font-size:0.8rem; color:var(--muted); margin-bottom:18px; }
+  .biz-score-row { display:flex; align-items:baseline; gap:6px; }
+  .biz-score { font-family:'Syne',sans-serif; font-size:2.4rem; font-weight:800; color:var(--accent); line-height:1; }
+  .biz-score-label { font-size:0.72rem; color:var(--muted); }
+  .biz-bar { height:3px; border-radius:2px; background:rgba(255,255,255,0.08); margin-top:12px; }
+  .biz-bar-fill { height:100%; background: linear-gradient(90deg, var(--accent2), var(--accent)); border-radius:2px; }
+  .biz-qr { position:absolute; top:20px; right:20px; width:36px; height:36px; opacity:0.4; }
+  .biz-footer { display:flex; align-items:center; gap:6px; margin-top:16px; font-size:0.7rem; color:var(--accent3); }
+  .biz-footer::before { content:'✓'; }
+
+  /* ── SIMULATION ── */
+  #simulation { background:var(--navy); }
+  .sim-wrap { margin-top:56px; background:var(--glass); border:1px solid var(--border); border-radius:16px; padding:48px; }
+  .sim-top { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; }
+  .sim-controls { }
+  .sim-control-label { font-size:0.75rem; letter-spacing:0.18em; color:var(--muted); margin-bottom:12px; }
+  .sim-slider {
+    -webkit-appearance:none; appearance:none;
+    width:100%; height:4px; border-radius:2px;
+    background: linear-gradient(90deg, var(--accent2) var(--pct,33%), rgba(255,255,255,0.1) var(--pct,33%));
+    outline:none; cursor:pointer; margin-bottom:28px;
+  }
+  .sim-slider::-webkit-slider-thumb {
+    -webkit-appearance:none; width:18px; height:18px; border-radius:50%;
+    background:var(--accent); border:2px solid #fff; cursor:pointer;
+    box-shadow:0 0 12px rgba(0,212,255,0.6);
+  }
+  .sim-level-labels { display:flex; justify-content:space-between; font-size:0.7rem; color:var(--muted); margin-top:-20px; margin-bottom:28px; }
+  .sim-btn {
+    width:100%; padding:16px;
+    background: linear-gradient(135deg, var(--accent2), var(--accent));
+    border:none; border-radius:8px;
+    color:#fff; font-family:'Syne',sans-serif; font-size:0.9rem; font-weight:700; letter-spacing:0.15em;
+    cursor:pointer; transition:all .25s;
+    box-shadow: 0 0 24px rgba(0,119,255,0.3);
+  }
+  .sim-btn:hover { box-shadow:0 0 40px rgba(0,119,255,0.5); transform:translateY(-1px); }
+  .sim-btn:active { transform:translateY(0); }
+
+  .sim-display { text-align:center; }
+  .sim-gauge-wrap { position:relative; width:200px; height:200px; margin:0 auto; }
+  .sim-gauge-svg { width:100%; height:100%; }
+  .gauge-track { fill:none; stroke:rgba(255,255,255,0.06); stroke-width:10; }
+  .gauge-fill { fill:none; stroke-width:10; stroke-linecap:round; transition: stroke-dasharray .8s ease, stroke .5s ease; }
+  .sim-score-display {
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    text-align:center;
+  }
+  .sim-score-num { font-family:'Syne',sans-serif; font-size:2.8rem; font-weight:800; line-height:1; transition:color .5s; }
+  .sim-score-pct { font-size:0.7rem; letter-spacing:0.15em; color:var(--muted); }
+  .sim-status-text { margin-top:16px; font-size:0.85rem; color:var(--muted); transition:color .4s; }
+
+  .sim-log { margin-top:40px; border-top:1px solid var(--border); padding-top:24px; }
+  .sim-log-title { font-size:0.7rem; letter-spacing:0.2em; color:var(--muted); margin-bottom:12px; }
+  .sim-log-items { display:flex; flex-direction:column; gap:8px; }
+  .sim-log-item { display:flex; align-items:center; gap:10px; font-size:0.8rem; padding:10px 14px; border-radius:6px; background:rgba(255,255,255,0.03); border:1px solid var(--border); }
+  .sim-log-item .log-icon { font-size:0.9rem; }
+  .sim-log-item .log-time { color:var(--muted); font-size:0.72rem; margin-left:auto; }
+
+  /* ── HOW IT WORKS ── */
+  #how { background:var(--deep); }
+  .steps-row { display:flex; gap:0; margin-top:60px; position:relative; }
+  .steps-row::before {
+    content:''; position:absolute; top:40px; left:calc(16.66% + 12px); right:calc(16.66% + 12px);
+    height:1px; background:linear-gradient(90deg, var(--accent2), var(--accent), var(--accent3));
+  }
+  .step { flex:1; padding:0 24px; text-align:center; }
+  .step-icon {
+    width:80px; height:80px; border-radius:50%; margin:0 auto 24px;
+    border:1.5px solid; display:flex; align-items:center; justify-content:center;
+    font-size:1.6rem; position:relative; z-index:1;
+  }
+  .step-icon.detect { border-color:var(--danger); background:rgba(255,60,90,0.08); box-shadow:0 0 24px rgba(255,60,90,0.2); }
+  .step-icon.verify { border-color:var(--warn);   background:rgba(255,170,0,0.08); box-shadow:0 0 24px rgba(255,170,0,0.2); }
+  .step-icon.restore{ border-color:var(--accent3); background:rgba(0,255,179,0.08); box-shadow:0 0 24px rgba(0,255,179,0.2); }
+  .step-num { font-family:'Syne',sans-serif; font-size:0.7rem; letter-spacing:0.2em; color:var(--muted); margin-bottom:8px; }
+  .step-title { font-family:'Syne',sans-serif; font-size:1.2rem; font-weight:700; margin-bottom:8px; }
+  .step-body { font-size:0.85rem; color:var(--muted); line-height:1.6; }
+
+  /* ── FUTURE THREATS ── */
+  #future {
+    background: #000;
+    position:relative; overflow:hidden;
+  }
+  .future-particles { position:absolute; inset:0; overflow:hidden; }
+  .fp { position:absolute; width:2px; height:2px; border-radius:50%; background:var(--accent); opacity:.4; animation:fpFloat linear infinite; }
+  @keyframes fpFloat {
+    0%   { transform:translateY(100vh) translateX(0); opacity:.4; }
+    100% { transform:translateY(-10vh) translateX(var(--dx)); opacity:0; }
+  }
+  #future .container { position:relative; z-index:1; text-align:center; }
+  .future-title {
+    font-family:'Syne',sans-serif;
+    font-size: clamp(2rem, 4.5vw, 4rem);
+    font-weight:800; max-width:800px; margin:0 auto;
+    line-height:1.15;
+  }
+  .future-title .hl { color:var(--accent); }
+  .future-sub { color:var(--muted); margin:24px auto 0; max-width:560px; font-size:1.05rem; }
+  .future-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:56px; text-align:left; }
+  .fc { background:rgba(10,20,40,0.8); border:1px solid rgba(0,212,255,0.12); border-radius:12px; padding:28px; }
+  .fc-icon { font-size:1.8rem; margin-bottom:16px; }
+  .fc-title { font-family:'Syne',sans-serif; font-weight:700; margin-bottom:8px; }
+  .fc-body { font-size:0.85rem; color:var(--muted); }
+
+  /* ── ADMIN PANEL ── */
+  #admin {
+    background:var(--deep);
+    border-top: 1px solid rgba(255,60,90,0.2);
+    border-bottom: 1px solid rgba(255,60,90,0.2);
+  }
+  .admin-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(255,60,90,0.1); border:1px solid rgba(255,60,90,0.3); border-radius:4px; padding:6px 14px; margin-bottom:16px; font-size:0.72rem; letter-spacing:0.15em; color:#ff3c5a; }
+  .admin-grid { display:grid; grid-template-columns:1fr 1fr; gap:32px; margin-top:40px; }
+  .admin-panel { background:var(--glass); border:1px solid rgba(255,60,90,0.2); border-radius:12px; padding:28px; }
+  .admin-panel-title { font-family:'Syne',sans-serif; font-size:1rem; font-weight:700; margin-bottom:24px; color:var(--text); }
+  .admin-control { margin-bottom:20px; }
+  .admin-control label { font-size:0.75rem; letter-spacing:0.12em; color:var(--muted); display:flex; justify-content:space-between; margin-bottom:8px; }
+  .admin-control label span { color:var(--accent); font-family:'Syne',sans-serif; }
+  .admin-slider {
+    -webkit-appearance:none; appearance:none;
+    width:100%; height:3px; border-radius:2px;
+    background:rgba(255,255,255,0.1); outline:none; cursor:pointer;
+  }
+  .admin-slider::-webkit-slider-thumb {
+    -webkit-appearance:none; width:16px; height:16px; border-radius:50%;
+    background:#ff3c5a; border:2px solid #fff; cursor:pointer;
+  }
+  .admin-toggle-row { display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; }
+  .admin-toggle-label { font-size:0.82rem; color:var(--muted); }
+  .toggle {
+    width:40px; height:22px; border-radius:11px;
+    background:rgba(255,255,255,0.1); border:1px solid var(--border);
+    position:relative; cursor:pointer; transition:background .25s;
+  }
+  .toggle.on { background:var(--accent3); border-color:var(--accent3); }
+  .toggle::after {
+    content:''; position:absolute; top:2px; left:2px;
+    width:16px; height:16px; border-radius:50%;
+    background:#fff; transition:transform .25s;
+  }
+  .toggle.on::after { transform:translateX(18px); }
+  .admin-display { background:var(--glass); border:1px solid rgba(255,60,90,0.2); border-radius:12px; padding:28px; }
+  .admin-display-title { font-family:'Syne',sans-serif; font-size:1rem; font-weight:700; margin-bottom:24px; }
+  .admin-metrics { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .admin-metric { background:rgba(255,255,255,0.03); border-radius:8px; padding:16px; border:1px solid var(--border); }
+  .am-val { font-family:'Syne',sans-serif; font-size:2rem; font-weight:800; }
+  .am-lbl { font-size:0.7rem; color:var(--muted); letter-spacing:0.1em; margin-top:4px; }
+  .admin-apply-btn {
+    width:100%; padding:14px; margin-top:20px;
+    background:rgba(255,60,90,0.15); border:1px solid rgba(255,60,90,0.4);
+    color:#ff3c5a; font-family:'Syne',sans-serif; font-size:0.85rem; letter-spacing:0.15em;
+    border-radius:6px; cursor:pointer; font-weight:700; transition:all .25s;
+  }
+  .admin-apply-btn:hover { background:rgba(255,60,90,0.25); }
+
+  /* ── CLOSING ── */
+  #closing {
+    background: linear-gradient(180deg, var(--navy) 0%, #010812 100%);
+    text-align:center; padding:140px 48px;
+  }
+  .closing-title {
+    font-family:'Syne',sans-serif;
+    font-size: clamp(2rem, 4vw, 3.8rem);
+    font-weight:800; line-height:1.15; max-width:720px; margin:0 auto;
+  }
+  .closing-title .c1 { color:var(--accent); }
+  .closing-title .c2 { color:var(--accent3); }
+  .closing-divider { width:60px; height:2px; background:linear-gradient(90deg, var(--accent2),var(--accent)); margin:40px auto; border-radius:1px; }
+  .closing-tagline { font-family:'Syne',sans-serif; font-size:0.75rem; letter-spacing:0.3em; color:var(--muted); margin-bottom:60px; }
+  .closing-team { font-size:0.82rem; color:var(--muted); }
+  .closing-team strong { color:var(--text); }
+
+  footer {
+    background:#010810; padding:28px 48px; display:flex; align-items:center; justify-content:space-between;
+    border-top:1px solid var(--border);
+  }
+  .footer-logo { font-family:'Syne',sans-serif; font-size:0.9rem; font-weight:800; color:var(--accent); letter-spacing:0.12em; }
+  .footer-copy { font-size:0.75rem; color:var(--muted); }
+
+  /* ── MODAL TOAST ── */
+  .toast {
+    position:fixed; bottom:32px; left:50%; transform:translateX(-50%) translateY(60px);
+    background:var(--glass); border:1px solid var(--accent); border-radius:8px;
+    padding:14px 28px; font-size:0.85rem; color:var(--accent);
+    backdrop-filter:blur(20px); z-index:9999; transition:transform .35s ease;
+    font-family:'Syne',sans-serif; letter-spacing:0.08em;
+    box-shadow: 0 0 30px rgba(0,212,255,0.3);
+  }
+  .toast.show { transform:translateX(-50%) translateY(0); }
+
+  /* responsive */
+  @media (max-width:768px) {
+    nav { padding:16px 20px; }
+    .nav-links { display:none; }
+    section { padding:70px 20px; }
+    .map-wrap, .threat-grid, .biz-grid, .future-cards, .admin-grid { grid-template-columns:1fr; }
+    .steps-row { flex-direction:column; gap:32px; }
+    .steps-row::before { display:none; }
+    .sim-top { grid-template-columns:1fr; }
+    footer { flex-direction:column; gap:12px; text-align:center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">TRUST<span>VAULT</span> KM</div>
+  <ul class="nav-links">
+    <li><a href="#map-section">Live Map</a></li>
+    <li><a href="#threats">Threats</a></li>
+    <li><a href="#simulation">Simulate</a></li>
+    <li><a href="#admin">Admin</a></li>
+  </ul>
+  <button class="nav-cta" onclick="scrollTo('#map-section')">VERIFY LIVE</button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-eyebrow">DIGITAL TRUST INFRASTRUCTURE · KASHMIR</div>
+  <h1 class="hero-title">TRUST<span class="accent-word">VAULT</span><br>KASHMIR</h1>
+  <p class="hero-sub">Protecting Business Confidence in Real Time — before fear becomes financial loss.</p>
+  <div class="trust-circle-wrap">
+    <div class="trust-ring"></div>
+    <div class="trust-ring"></div>
+    <div class="trust-ring"></div>
+    <div class="trust-core">
+      <div class="trust-num" id="heroScore">94%</div>
+      <div class="trust-label">TRUST SCORE</div>
+    </div>
+  </div>
+  <button class="hero-btn" onclick="document.getElementById('simulation').scrollIntoView({behavior:'smooth'})">⊕ VERIFY KASHMIR LIVE</button>
+</section>
+
+<!-- LIVE MAP -->
+<section id="map-section">
+  <div class="container">
+    <div class="section-label">REAL-TIME MONITORING</div>
+    <h2 class="section-title">Kashmir Trust Map</h2>
+    <p class="section-body">Live verification status across all districts. Click any region for detailed business trust data.</p>
+    <div class="map-wrap">
+      <div class="map-canvas">
+        <div class="map-header">
+          <span><span class="live-dot"></span>LIVE DATA STREAM</span>
+          <span id="mapTime">--:--:-- IST</span>
+        </div>
+        <div class="map-svg-area">
+          <!-- Stylized Kashmir map with clickable districts -->
+          <svg viewBox="0 0 600 500" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:380px;">
+            <defs>
+              <filter id="glow-f">
+                <feGaussianBlur stdDeviation="3" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+            <!-- Background -->
+            <rect width="600" height="500" fill="rgba(2,11,24,0.5)" rx="8"/>
+            <!-- District paths - stylized Kashmir regions -->
+            <!-- Srinagar -->
+            <polygon class="district-path" data-district="Srinagar" data-status="verified"
+              points="250,200 290,185 320,195 315,230 290,245 255,235"
+              fill="rgba(0,255,179,0.25)" stroke="#00ffb3" stroke-width="1.5" filter="url(#glow-f)"/>
+            <!-- Pahalgam / Anantnag -->
+            <polygon class="district-path" data-district="Pahalgam / Anantnag" data-status="verified"
+              points="270,248 320,235 350,250 355,290 320,310 275,295"
+              fill="rgba(0,255,179,0.2)" stroke="#00ffb3" stroke-width="1.5"/>
+            <!-- Gulmarg / Baramulla -->
+            <polygon class="district-path" data-district="Gulmarg / Baramulla" data-status="verified"
+              points="160,180 220,165 250,185 255,220 220,235 175,225"
+              fill="rgba(0,255,179,0.22)" stroke="#00ffb3" stroke-width="1.5" filter="url(#glow-f)"/>
+            <!-- Sonamarg / Ganderbal -->
+            <polygon class="district-path" data-district="Sonamarg / Ganderbal" data-status="verifying"
+              points="310,170 360,158 385,175 380,210 345,225 315,210"
+              fill="rgba(255,170,0,0.2)" stroke="#ffaa00" stroke-width="1.5"/>
+            <!-- Kupwara -->
+            <polygon class="district-path" data-district="Kupwara" data-status="verified"
+              points="130,140 185,125 210,145 205,175 170,188 132,175"
+              fill="rgba(0,255,179,0.18)" stroke="#00ffb3" stroke-width="1.5"/>
+            <!-- Jammu Region -->
+            <polygon class="district-path" data-district="Jammu" data-status="verified"
+              points="200,340 260,325 295,345 290,385 250,400 198,388"
+              fill="rgba(0,212,255,0.2)" stroke="#00d4ff" stroke-width="1.5"/>
+            <!-- Kargil -->
+            <polygon class="district-path" data-district="Kargil" data-status="verifying"
+              points="370,140 430,128 460,150 452,185 415,198 368,182"
+              fill="rgba(255,170,0,0.18)" stroke="#ffaa00" stroke-width="1.5"/>
+            <!-- Leh -->
+            <polygon class="district-path" data-district="Leh" data-status="verified"
+              points="430,140 510,125 540,155 528,200 480,215 428,192"
+              fill="rgba(0,255,179,0.15)" stroke="#00ffb3" stroke-width="1.5"/>
+            <!-- Pulwama -->
+            <polygon class="district-path" data-district="Pulwama" data-status="alert"
+              points="235,295 280,280 308,295 302,325 268,338 232,325"
+              fill="rgba(255,60,90,0.18)" stroke="#ff3c5a" stroke-width="1.5"/>
+            <!-- Labels -->
+            <text x="275" y="218" fill="#00ffb3" font-size="11" font-family="sans-serif" text-anchor="middle" opacity="0.9">Srinagar</text>
+            <text x="310" y="273" fill="#00ffb3" font-size="10" font-family="sans-serif" text-anchor="middle" opacity="0.8">Pahalgam</text>
+            <text x="210" y="205" fill="#00ffb3" font-size="10" font-family="sans-serif" text-anchor="middle" opacity="0.8">Gulmarg</text>
+            <text x="350" y="196" fill="#ffaa00" font-size="10" font-family="sans-serif" text-anchor="middle" opacity="0.9">Sonamarg</text>
+            <text x="170" y="160" fill="#00ffb3" font-size="10" font-family="sans-serif" text-anchor="middle" opacity="0.8">Kupwara</text>
+            <text x="245" y="368" fill="#00d4ff" font-size="10" font-family="sans-serif" text-anchor="middle" opacity="0.8">Jammu</text>
+            <text x="412" y="168" fill="#ffaa00" font-size="10" font-family="sans-serif" text-anchor="middle" opacity="0.9">Kargil</text>
+            <text x="480" y="172" fill="#00ffb3" font-size="10" font-family="sans-serif" text-anchor="middle" opacity="0.8">Leh</text>
+            <text x="268" y="313" fill="#ff3c5a" font-size="10" font-family="sans-serif" text-anchor="middle" opacity="0.9">Pulwama</text>
+            <!-- Pulse effects on active areas -->
+            <circle cx="275" cy="215" r="18" fill="none" stroke="#00ffb3" stroke-width="1" opacity="0.4">
+              <animate attributeName="r" values="12;22;12" dur="2.5s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.5;0;0.5" dur="2.5s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="210" cy="200" r="16" fill="none" stroke="#00ffb3" stroke-width="1" opacity="0.3">
+              <animate attributeName="r" values="10;20;10" dur="3s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.4;0;0.4" dur="3s" repeatCount="indefinite"/>
+            </circle>
+          </svg>
+        </div>
+        <div class="map-legend">
+          <div class="legend-item"><div class="legend-dot" style="background:#00ffb3;box-shadow:0 0 6px #00ffb3"></div>TVK Verified Active</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#ffaa00;box-shadow:0 0 6px #ffaa00"></div>Under Verification</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#ff3c5a;box-shadow:0 0 6px #ff3c5a"></div>Alert Zone</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#00d4ff;box-shadow:0 0 6px #00d4ff"></div>Monitored</div>
+        </div>
+      </div>
+      <!-- District Detail Panel -->
+      <div class="district-panel" id="districtPanel">
+        <div class="dp-header" id="dpName">Srinagar</div>
+        <div class="dp-badge" id="dpBadge">✓ TVK VERIFIED OPERATIONAL</div>
+        <div class="dp-stats">
+          <div class="dp-stat">
+            <div class="dp-stat-label">HOTELS ACTIVE</div>
+            <div class="dp-stat-val green" id="dpHotels">48 / 52</div>
+            <div class="dp-bar"><div class="dp-bar-fill" id="dpHBar" style="width:92%;background:linear-gradient(90deg,#00ffb3,#00d4ff)"></div></div>
+          </div>
+          <div class="dp-stat">
+            <div class="dp-stat-label">BUSINESS TRUST INDEX</div>
+            <div class="dp-stat-val blue" id="dpTrust">94</div>
+            <div class="dp-bar"><div class="dp-bar-fill" id="dpTBar" style="width:94%;background:linear-gradient(90deg,#0077ff,#00d4ff)"></div></div>
+          </div>
+          <div class="dp-stat">
+            <div class="dp-stat-label">TOURISM STABILITY</div>
+            <div class="dp-stat-val green" id="dpTour">Normal Flow</div>
+            <div class="dp-bar"><div class="dp-bar-fill" id="dpStBar" style="width:88%;background:linear-gradient(90deg,#00ffb3,#00d4ff)"></div></div>
+          </div>
+          <div class="dp-stat">
+            <div class="dp-stat-label">LAST VERIFIED</div>
+            <div class="dp-stat-val" id="dpLast" style="font-size:1rem;color:var(--muted);">2 min ago</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THREAT DASHBOARD -->
+<section id="threats">
+  <div class="container">
+    <div class="section-label">REAL-TIME DEFENSE</div>
+    <h2 class="section-title">Threat Detection Dashboard</h2>
+    <p class="section-body">AI-powered monitoring that detects, cross-verifies, and neutralizes misinformation before it harms business.</p>
+    <div class="threat-grid">
+      <div class="threat-card">
+        <div class="tc-status"><div class="tc-status-dot status-alert"></div><div class="tc-status-text">THREAT DETECTED</div></div>
+        <div class="tc-title">Misinformation Scan Active</div>
+        <div class="tc-body">Viral content claiming "Pahalgam tourism shut down" detected across 3 platforms. Credibility score: 12%.</div>
+        <div class="scan-line"></div>
+        <div class="tc-items">
+          <div class="tc-item"><span class="alert">⚠</span> Fake post: "All hotels closed — DO NOT TRAVEL"</div>
+          <div class="tc-item"><span class="alert">⚠</span> Coordinated reshare: 847 accounts in 22 min</div>
+          <div class="tc-item"><span class="check">✓</span> TVK verification triggered automatically</div>
+        </div>
+      </div>
+      <div class="threat-card">
+        <div class="tc-status"><div class="tc-status-dot status-run"></div><div class="tc-status-text">CROSS-VERIFYING NOW</div></div>
+        <div class="tc-title">Real-Data Cross Check</div>
+        <div class="tc-body">TVK engine querying live hotel registries, transport data, and business operator feeds in real time.</div>
+        <div class="scan-line"></div>
+        <div class="tc-items">
+          <div class="tc-item"><span class="check">✓</span> Hotel registries: 48/52 Pahalgam hotels reporting OPEN</div>
+          <div class="tc-item"><span class="check">✓</span> Airport arrivals nominal — 1,240 tourists today</div>
+          <div class="tc-item"><span class="warn">●</span> 1 highway checkpoint delay (weather) — non-critical</div>
+        </div>
+      </div>
+      <div class="threat-card">
+        <div class="tc-status"><div class="tc-status-dot status-ok"></div><div class="tc-status-text">TRUTH RELEASED</div></div>
+        <div class="tc-title">Verified Status Broadcast</div>
+        <div class="tc-body">TVK Verified Operational Status issued across all partner channels. Panic signal neutralized.</div>
+        <div class="scan-line"></div>
+        <div class="tc-items">
+          <div class="tc-item"><span class="check">✓</span> Status page updated: "Pahalgam — Fully Operational"</div>
+          <div class="tc-item"><span class="check">✓</span> Partner hotels notified — embed widget refreshed</div>
+          <div class="tc-item"><span class="check">✓</span> Booking platforms alerted — cancellations paused</div>
+        </div>
+      </div>
+      <div class="threat-card">
+        <div class="tc-status"><div class="tc-status-dot status-ok"></div><div class="tc-status-text">CONFIDENCE RESTORED</div></div>
+        <div class="tc-title">Post-Event Recovery Metrics</div>
+        <div class="tc-body">Real-time impact analysis after TVK intervention. Business confidence restored within 18 minutes.</div>
+        <div class="scan-line"></div>
+        <div class="tc-items">
+          <div class="tc-item"><span class="check">✓</span> Booking cancellations reversed: 34 re-confirmed</div>
+          <div class="tc-item"><span class="check">✓</span> Trust score stabilized at 91% (pre-incident: 94%)</div>
+          <div class="tc-item"><span class="check">✓</span> Estimated revenue protected: ₹18.6 Lakhs</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VERIFIED BUSINESSES WALL -->
+<section id="businesses">
+  <div class="container">
+    <div class="section-label">TVK PARTNER NETWORK</div>
+    <h2 class="section-title">Verified Business Registry</h2>
+    <p class="section-body">Every business on the TVK network carries a live-verified trust mark — real confidence, backed by real data.</p>
+    <div class="biz-grid" id="bizGrid">
+      <!-- Cards injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- AI SIMULATION -->
+<section id="simulation">
+  <div class="container">
+    <div class="section-label">INTERACTIVE DEMONSTRATION</div>
+    <h2 class="section-title">Trust Score Simulation</h2>
+    <p class="section-body">Experience how TVK responds to a misinformation event in real time. Adjust the panic intensity and watch TVK restore confidence.</p>
+    <div class="sim-wrap">
+      <div class="sim-top">
+        <div class="sim-controls">
+          <div class="sim-control-label">FAKE NEWS INTENSITY</div>
+          <input type="range" class="sim-slider" id="panicSlider" min="0" max="100" value="30" oninput="updateSimSlider(this)">
+          <div class="sim-level-labels"><span>LOW</span><span>MEDIUM</span><span>HIGH</span></div>
+
+          <div class="sim-control-label">SOCIAL SPREAD RATE</div>
+          <input type="range" class="sim-slider" id="spreadSlider" min="0" max="100" value="20" oninput="updateSimSlider(this)">
+          <div class="sim-level-labels"><span>LOCAL</span><span>REGIONAL</span><span>VIRAL</span></div>
+
+          <button class="sim-btn" onclick="runVerification()">⊕ ACTIVATE TVK VERIFICATION</button>
+        </div>
+        <div class="sim-display">
+          <div class="sim-gauge-wrap">
+            <svg class="sim-gauge-svg" viewBox="0 0 120 120">
+              <circle class="gauge-track" cx="60" cy="60" r="50" stroke-dasharray="314" stroke-dashoffset="0" transform="rotate(-90 60 60)"/>
+              <circle class="gauge-fill" id="gaugeFill" cx="60" cy="60" r="50"
+                stroke="#00d4ff" stroke-dasharray="270 314" stroke-dashoffset="0" transform="rotate(-90 60 60)"/>
+            </svg>
+            <div class="sim-score-display">
+              <div class="sim-score-num" id="simScore">94</div>
+              <div class="sim-score-pct">TRUST</div>
+            </div>
+          </div>
+          <div class="sim-status-text" id="simStatus">Kashmir business ecosystem is fully operational.</div>
+        </div>
+      </div>
+      <div class="sim-log">
+        <div class="sim-log-title">SYSTEM LOG</div>
+        <div class="sim-log-items" id="simLog">
+          <div class="sim-log-item"><span class="log-icon">🟢</span><span>TVK system online — all monitors active</span><span class="log-time">just now</span></div>
+          <div class="sim-log-item"><span class="log-icon">📡</span><span>Scanning 14 social platforms — 0 threats detected</span><span class="log-time">00:12</span></div>
+          <div class="sim-log-item"><span class="log-icon">✅</span><span>All 9 districts verified operational</span><span class="log-time">00:28</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="container">
+    <div class="section-label">MECHANISM</div>
+    <h2 class="section-title">How TVK Works</h2>
+    <p class="section-body">A three-phase system that converts digital panic into verified truth — before damage is done.</p>
+    <div class="steps-row">
+      <div class="step">
+        <div class="step-icon detect">🔍</div>
+        <div class="step-num">PHASE 01</div>
+        <div class="step-title">Detect</div>
+        <div class="step-body">AI sentiment analysis continuously monitors social media, news feeds, and messaging platforms for suspicious panic signals, rumor patterns, and coordinated misinformation campaigns.</div>
+      </div>
+      <div class="step">
+        <div class="step-icon verify">⚙</div>
+        <div class="step-num">PHASE 02</div>
+        <div class="step-title">Verify</div>
+        <div class="step-body">Detected signals are instantly cross-referenced against live data from verified hotel registries, transport hubs, airport arrivals, and trusted business operators across Kashmir.</div>
+      </div>
+      <div class="step">
+        <div class="step-icon restore">✓</div>
+        <div class="step-num">PHASE 03</div>
+        <div class="step-title">Restore</div>
+        <div class="step-body">Verified truth is published through all partner channels — booking platforms, travel agencies, social feeds — rapidly restoring public confidence and protecting business revenue.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FUTURE THREATS -->
+<section id="future">
+  <div class="future-particles" id="particles"></div>
+  <div class="container">
+    <div class="section-label" style="text-align:center;margin-bottom:24px;">STRATEGIC FORESIGHT</div>
+    <h2 class="future-title">Tomorrow's threats are <span class="hl">digital.</span><br>TVK protects Kashmir before fear becomes loss.</h2>
+    <p class="future-sub">As AI deepfakes and synthetic media mature, the speed of reputational damage will outpace human response. TVK is the infrastructure that fights back.</p>
+    <div class="future-cards">
+      <div class="fc">
+        <div class="fc-icon">🤖</div>
+        <div class="fc-title">AI Deepfake Attacks</div>
+        <div class="fc-body">Synthetic videos portraying false crisis scenarios in Kashmir can go viral within minutes. TVK's verification layer exposes fabricated content before tourists cancel.</div>
+      </div>
+      <div class="fc">
+        <div class="fc-icon">🌐</div>
+        <div class="fc-title">Coordinated Disinfo Campaigns</div>
+        <div class="fc-body">Bot networks can flood social platforms with false panic simultaneously. TVK's distributed monitoring detects coordinated activity patterns others miss.</div>
+      </div>
+      <div class="fc">
+        <div class="fc-icon">🛡</div>
+        <div class="fc-title">Real-Time Shield</div>
+        <div class="fc-body">Where traditional media reacts hours later, TVK responds in minutes. The economic shield operates 24/7 — protecting handicrafts, hotels, and hospitality every moment.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADMIN PANEL -->
+<section id="admin">
+  <div class="container">
+    <div class="admin-badge">🔒 ADMIN DEMO PANEL — OPERATOR ACCESS</div>
+    <h2 class="section-title">Live Demo Controls</h2>
+    <p class="section-body">Simulate real-world scenarios and watch TVK respond dynamically. Use these controls during your live presentation.</p>
+    <div class="admin-grid">
+      <div>
+        <div class="admin-panel">
+          <div class="admin-panel-title">🎛 SCENARIO CONTROLS</div>
+          <div class="admin-control">
+            <label>PANIC LEVEL <span id="panicVal">35%</span></label>
+            <input type="range" class="admin-slider" id="adminPanic" min="0" max="100" value="35" oninput="adminUpdate()">
+          </div>
+          <div class="admin-control">
+            <label>HOTEL ACTIVITY <span id="hotelVal">92%</span></label>
+            <input type="range" class="admin-slider" id="adminHotel" min="0" max="100" value="92" oninput="adminUpdate()" style="accent-color:#00ffb3">
+          </div>
+          <div class="admin-control">
+            <label>TOURISM MOVEMENT <span id="tourVal">87%</span></label>
+            <input type="range" class="admin-slider" id="adminTour" min="0" max="100" value="87" oninput="adminUpdate()" style="accent-color:#00ffb3">
+          </div>
+          <div class="admin-toggle-row">
+            <span class="admin-toggle-label">TVK Verification Engine</span>
+            <div class="toggle on" id="verifyToggle" onclick="this.classList.toggle('on'); adminUpdate()"></div>
+          </div>
+          <div class="admin-toggle-row">
+            <span class="admin-toggle-label">Broadcast Truth Channel</span>
+            <div class="toggle on" id="broadcastToggle" onclick="this.classList.toggle('on'); adminUpdate()"></div>
+          </div>
+          <div class="admin-toggle-row">
+            <span class="admin-toggle-label">Partner Alert System</span>
+            <div class="toggle on" id="alertToggle" onclick="this.classList.toggle('on'); adminUpdate()"></div>
+          </div>
+          <button class="admin-apply-btn" onclick="applyAdminScenario()">▶ APPLY SCENARIO</button>
+        </div>
+      </div>
+      <div class="admin-display">
+        <div class="admin-display-title">📊 LIVE SYSTEM OUTPUT</div>
+        <div class="admin-metrics">
+          <div class="admin-metric">
+            <div class="am-val" id="amTrust" style="color:var(--accent3)">91</div>
+            <div class="am-lbl">TRUST SCORE</div>
+          </div>
+          <div class="admin-metric">
+            <div class="am-val" id="amHotels" style="color:var(--accent)">48</div>
+            <div class="am-lbl">HOTELS ACTIVE</div>
+          </div>
+          <div class="admin-metric">
+            <div class="am-val" id="amThreats" style="color:var(--danger)">2</div>
+            <div class="am-lbl">THREATS FOUND</div>
+          </div>
+          <div class="admin-metric">
+            <div class="am-val" id="amProtected" style="color:var(--accent3)">₹18L</div>
+            <div class="am-lbl">REVENUE SAVED</div>
+          </div>
+        </div>
+        <div style="margin-top:24px; background:rgba(0,0,0,0.3); border-radius:8px; padding:16px; font-size:0.78rem; color:var(--muted); border:1px solid var(--border);">
+          <div style="color:var(--accent3);font-size:0.7rem;letter-spacing:0.15em;margin-bottom:10px;">SYSTEM STATUS LOG</div>
+          <div id="adminLog" style="display:flex;flex-direction:column;gap:6px;">
+            <div style="display:flex;justify-content:space-between;"><span>🟢 All systems nominal</span><span>00:00</span></div>
+            <div style="display:flex;justify-content:space-between;"><span>📡 Monitoring 14 platforms</span><span>00:05</span></div>
+            <div style="display:flex;justify-content:space-between;"><span>✅ Verification engine: ONLINE</span><span>00:12</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section id="closing">
+  <div class="container">
+    <h2 class="closing-title">
+      Protect <span class="c1">Trust.</span><br>
+      Protect <span class="c2">Business.</span><br>
+      Protect <span class="accent-word">Kashmir.</span>
+    </h2>
+    <div class="closing-divider"></div>
+    <p class="closing-tagline">THE FUTURE THREAT TO COMMERCE IS NO LONGER JUST PHYSICAL — IT IS THE EROSION OF TRUST.</p>
+    <p class="closing-team">Built by <strong>BOMIS Code-X</strong> &nbsp;·&nbsp; Conceptualized by <strong>Emaad Ul Emaan Bhat</strong></p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">TRUSTVAULT KASHMIR</div>
+  <div class="footer-copy">© 2025 TrustVault Kashmir · Digital Trust Infrastructure · All rights reserved</div>
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast">✓ Verification Complete — Kashmir Operational</div>
+
+<script>
+// ── CLOCK ──
+function updateClock() {
+  const now = new Date();
+  const t = now.toLocaleTimeString('en-IN', {timeZone:'Asia/Kolkata'});
+  const el = document.getElementById('mapTime');
+  if(el) el.textContent = t + ' IST';
+}
+setInterval(updateClock, 1000); updateClock();
+
+// ── MAP DISTRICT CLICK ──
+const districtData = {
+  'Srinagar':        { hotels:'48 / 52', trust:94, bar:94, tour:'Normal Flow', tBar:92, badge:'✓ TVK VERIFIED OPERATIONAL', bc:'rgba(0,255,179,0.12)', bc2:'rgba(0,255,179,0.3)', color:'#00ffb3', last:'2 min ago' },
+  'Pahalgam / Anantnag':{ hotels:'36 / 40', trust:89, bar:89, tour:'Active — Peak Season', tBar:88, badge:'✓ TVK VERIFIED OPERATIONAL', bc:'rgba(0,255,179,0.12)', bc2:'rgba(0,255,179,0.3)', color:'#00ffb3', last:'5 min ago' },
+  'Gulmarg / Baramulla':{ hotels:'22 / 24', trust:91, bar:91, tour:'Normal Flow', tBar:90, badge:'✓ TVK VERIFIED OPERATIONAL', bc:'rgba(0,255,179,0.12)', bc2:'rgba(0,255,179,0.3)', color:'#00ffb3', last:'3 min ago' },
+  'Sonamarg / Ganderbal':{ hotels:'14 / 18', trust:71, bar:71, tour:'Under Review', tBar:70, badge:'⏳ UNDER VERIFICATION', bc:'rgba(255,170,0,0.12)', bc2:'rgba(255,170,0,0.3)', color:'#ffaa00', last:'8 min ago' },
+  'Kupwara':         { hotels:'18 / 20', trust:88, bar:88, tour:'Normal Flow', tBar:86, badge:'✓ TVK VERIFIED OPERATIONAL', bc:'rgba(0,255,179,0.12)', bc2:'rgba(0,255,179,0.3)', color:'#00ffb3', last:'6 min ago' },
+  'Jammu':           { hotels:'52 / 58', trust:92, bar:92, tour:'High Activity', tBar:91, badge:'✓ TVK VERIFIED OPERATIONAL', bc:'rgba(0,212,255,0.12)', bc2:'rgba(0,212,255,0.3)', color:'#00d4ff', last:'1 min ago' },
+  'Kargil':          { hotels:'8 / 12', trust:65, bar:65, tour:'Limited — Monitoring', tBar:63, badge:'⏳ UNDER VERIFICATION', bc:'rgba(255,170,0,0.12)', bc2:'rgba(255,170,0,0.3)', color:'#ffaa00', last:'12 min ago' },
+  'Leh':             { hotels:'44 / 50', trust:90, bar:90, tour:'Normal Flow', tBar:89, badge:'✓ TVK VERIFIED OPERATIONAL', bc:'rgba(0,255,179,0.12)', bc2:'rgba(0,255,179,0.3)', color:'#00ffb3', last:'4 min ago' },
+  'Pulwama':         { hotels:'6 / 14', trust:38, bar:38, tour:'⚠ Alert Issued', tBar:35, badge:'⚠ ALERT — VERIFICATION IN PROGRESS', bc:'rgba(255,60,90,0.12)', bc2:'rgba(255,60,90,0.3)', color:'#ff3c5a', last:'just now' },
+};
+
+document.querySelectorAll('.district-path').forEach(el => {
+  el.addEventListener('click', function() {
+    const d = this.dataset.district;
+    const info = districtData[d];
+    if(!info) return;
+    document.getElementById('dpName').textContent = d;
+    const badge = document.getElementById('dpBadge');
+    badge.textContent = info.badge;
+    badge.style.background = info.bc;
+    badge.style.color = info.color;
+    badge.style.border = `1px solid ${info.bc2}`;
+    document.getElementById('dpHotels').textContent = info.hotels;
+    document.getElementById('dpHotels').style.color = info.trust > 70 ? 'var(--accent3)' : info.trust > 50 ? 'var(--warn)' : 'var(--danger)';
+    document.getElementById('dpHBar').style.width = info.bar + '%';
+    document.getElementById('dpTrust').textContent = info.trust;
+    document.getElementById('dpTBar').style.width = info.bar + '%';
+    document.getElementById('dpTour').textContent = info.tour;
+    document.getElementById('dpLast').textContent = info.last;
+  });
+});
+
+// ── BUSINESSES WALL ──
+const businesses = [
+  { name:'Pahalgam Grand Hotel', loc:'Pahalgam', score:96, tier:'TVK PLATINUM', barW:96 },
+  { name:'Dal Lake Houseboat Guild', loc:'Srinagar', score:94, tier:'TVK PLATINUM', barW:94 },
+  { name:'Kashmir Handicraft Hub', loc:'Old City, Srinagar', score:91, tier:'TVK GOLD', barW:91 },
+  { name:'Gulmarg Ski Resort & Lodge', loc:'Gulmarg', score:93, tier:'TVK PLATINUM', barW:93 },
+  { name:'Mughal Gardens Guest House', loc:'Srinagar', score:88, tier:'TVK GOLD', barW:88 },
+  { name:'Jammu Business Connect', loc:'Jammu', score:90, tier:'TVK GOLD', barW:90 },
+];
+
+const qrSvg = `<svg class="biz-qr" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="2" y="2" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
+  <rect x="5" y="5" width="8" height="8" fill="currentColor" opacity="0.4"/>
+  <rect x="20" y="2" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
+  <rect x="23" y="5" width="8" height="8" fill="currentColor" opacity="0.4"/>
+  <rect x="2" y="20" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
+  <rect x="5" y="23" width="8" height="8" fill="currentColor" opacity="0.4"/>
+  <rect x="20" y="20" width="4" height="4" fill="currentColor" opacity="0.6"/>
+  <rect x="26" y="20" width="4" height="4" fill="currentColor" opacity="0.6"/>
+  <rect x="20" y="26" width="4" height="4" fill="currentColor" opacity="0.6"/>
+  <rect x="26" y="26" width="4" height="4" fill="currentColor" opacity="0.6"/>
+</svg>`;
+
+const grid = document.getElementById('bizGrid');
+businesses.forEach(b => {
+  const card = document.createElement('div');
+  card.className = 'biz-card';
+  const isPlatinum = b.tier.includes('PLATINUM');
+  card.innerHTML = `
+    ${qrSvg}
+    <div class="biz-tier ${isPlatinum ? 'platinum' : 'gold'}">◈ ${b.tier}</div>
+    <div class="biz-name">${b.name}</div>
+    <div class="biz-loc">📍 ${b.loc}</div>
+    <div class="biz-score-row">
+      <div class="biz-score">${b.score}</div>
+      <div class="biz-score-label">/ 100<br>TRUST SCORE</div>
+    </div>
+    <div class="biz-bar"><div class="biz-bar-fill" style="width:${b.barW}%"></div></div>
+    <div class="biz-footer">TVK Verified Operational</div>
+  `;
+  grid.appendChild(card);
+});
+
+// ── SIMULATION ──
+let simVerified = false;
+let simScoreVal = 94;
+
+function updateSimSlider(el) {
+  const pct = (el.value - el.min) / (el.max - el.min) * 100;
+  el.style.setProperty('--pct', pct + '%');
+  updateSimScore(false);
+}
+
+function updateSimScore(verified) {
+  const panic  = +document.getElementById('panicSlider').value;
+  const spread = +document.getElementById('spreadSlider').value;
+  let base = 94 - (panic * 0.42) - (spread * 0.18);
+  if(verified) base = Math.min(94, base + 48);
+  base = Math.max(12, Math.round(base));
+  simScoreVal = base;
+
+  const el = document.getElementById('simScore');
+  const gauge = document.getElementById('gaugeFill');
+  const status = document.getElementById('simStatus');
+  el.textContent = base;
+
+  const circ = 314;
+  const arcLen = (base / 100) * 260;
+  gauge.setAttribute('stroke-dasharray', `${arcLen} ${circ}`);
+
+  let color;
+  if(base >= 80)       { color='#00ffb3'; status.textContent='✓ Kashmir business ecosystem is fully operational.'; status.style.color='#00ffb3'; }
+  else if(base >= 60)  { color='#00d4ff'; status.textContent='⚡ Moderate disruption detected. TVK verifying...'; status.style.color='#ffaa00'; }
+  else if(base >= 40)  { color='#ffaa00'; status.textContent='⚠ High misinformation detected. Initiating response.'; status.style.color='#ffaa00'; }
+  else                 { color='#ff3c5a'; status.textContent='🚨 CRITICAL: Major misinformation campaign active!'; status.style.color='#ff3c5a'; }
+  gauge.setAttribute('stroke', color);
+  el.style.color = color;
+  document.getElementById('heroScore').textContent = base + '%';
+}
+
+let verifying = false;
+function runVerification() {
+  if(verifying) return;
+  verifying = true;
+  const btn = document.querySelector('.sim-btn');
+  btn.textContent = '⏳ VERIFYING... PLEASE WAIT';
+  btn.style.opacity = '0.7';
+
+  addSimLog('🔍', 'Scanning social media for panic signals...', 'now');
+  setTimeout(()=>addSimLog('📡','Cross-referencing hotel + transport data...','00:03'),1200);
+  setTimeout(()=>addSimLog('⚙','Verifying with 52 registered businesses...','00:07'),2400);
+  setTimeout(()=>addSimLog('✅','Truth verified — broadcasting status update...','00:12'),3600);
+  setTimeout(()=>{
+    addSimLog('🟢','TVK Verified Status LIVE — panic neutralized.','00:18');
+    updateSimScore(true);
+    showToast('✓ TVK Verification Complete — Kashmir Fully Operational');
+    btn.textContent = '✓ VERIFIED — CLICK TO RESET';
+    btn.style.opacity = '1';
+    verifying = false;
+  }, 4800);
+}
+
+function addSimLog(icon, msg, time) {
+  const log = document.getElementById('simLog');
+  const item = document.createElement('div');
+  item.className = 'sim-log-item';
+  item.innerHTML = `<span class="log-icon">${icon}</span><span>${msg}</span><span class="log-time">${time}</span>`;
+  log.insertBefore(item, log.firstChild);
+  if(log.children.length > 6) log.removeChild(log.lastChild);
+}
+
+// ── ADMIN PANEL ──
+function adminUpdate() {
+  const panic  = +document.getElementById('adminPanic').value;
+  const hotel  = +document.getElementById('adminHotel').value;
+  const tour   = +document.getElementById('adminTour').value;
+  document.getElementById('panicVal').textContent  = panic + '%';
+  document.getElementById('hotelVal').textContent  = hotel + '%';
+  document.getElementById('tourVal').textContent   = tour  + '%';
+}
+
+function applyAdminScenario() {
+  const panic = +document.getElementById('adminPanic').value;
+  const hotel = +document.getElementById('adminHotel').value;
+  const tour  = +document.getElementById('adminTour').value;
+  const verifyOn    = document.getElementById('verifyToggle').classList.contains('on');
+  const broadcastOn = document.getElementById('broadcastToggle').classList.contains('on');
+
+  let trust = Math.round(hotel * 0.5 + tour * 0.3 - panic * 0.3 + (verifyOn?10:0) + (broadcastOn?5:0));
+  trust = Math.max(10, Math.min(99, trust));
+  const hotelCount = Math.round(hotel * 52 / 100);
+  const threats = panic > 70 ? 4 : panic > 40 ? 2 : 1;
+  const saved = trust > 70 ? '₹' + Math.round(trust * 0.22) + 'L' : '₹' + Math.round(trust * 0.08) + 'L';
+
+  document.getElementById('amTrust').textContent   = trust;
+  document.getElementById('amHotels').textContent  = hotelCount;
+  document.getElementById('amThreats').textContent = threats;
+  document.getElementById('amProtected').textContent = saved;
+
+  document.getElementById('amTrust').style.color = trust > 70 ? 'var(--accent3)' : trust > 50 ? 'var(--warn)' : 'var(--danger)';
+
+  const log = document.getElementById('adminLog');
+  const now = new Date().toLocaleTimeString('en-IN',{timeZone:'Asia/Kolkata',hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  log.innerHTML = `
+    <div style="display:flex;justify-content:space-between;"><span>${trust>70?'🟢':'🔴'} Trust: ${trust} — ${trust>70?'Stable':'At Risk'}</span><span>${now}</span></div>
+    <div style="display:flex;justify-content:space-between;"><span>${verifyOn?'✅':'❌'} Verification engine: ${verifyOn?'ONLINE':'OFFLINE'}</span><span>${now}</span></div>
+    <div style="display:flex;justify-content:space-between;"><span>📊 ${hotelCount}/52 hotels active</span><span>${now}</span></div>
+  `;
+  showToast('Scenario applied — dashboard updated');
+}
+
+// ── FUTURE PARTICLES ──
+const particleContainer = document.getElementById('particles');
+for(let i=0;i<30;i++) {
+  const p = document.createElement('div');
+  p.className='fp';
+  p.style.cssText=`left:${Math.random()*100}%;animation-duration:${6+Math.random()*10}s;animation-delay:${Math.random()*8}s;--dx:${(Math.random()-0.5)*100}px;`;
+  particleContainer.appendChild(p);
+}
+
+// ── TOAST ──
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 3500);
+}
+
+// ── NAV SCROLL ──
+function scrollTo(sel) { document.querySelector(sel)?.scrollIntoView({behavior:'smooth'}); }
+
+// Init sim
+updateSimScore(false);
+document.getElementById('panicSlider').style.setProperty('--pct','30%');
+document.getElementById('spreadSlider').style.setProperty('--pct','20%');
+</script>
+</body>
+</html>
